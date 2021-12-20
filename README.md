@@ -73,8 +73,6 @@ I3D(the loss function in the paper)
 I3D(custom loss function)
 
 
-I3D(original loss), I3D(custom loss)
-
 ## 5.2. R3D
 
 ![basic_roc_auc](https://user-images.githubusercontent.com/28619620/146715766-60a6be3c-7144-48db-b6dd-bba6abddfffa.png)
