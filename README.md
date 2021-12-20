@@ -84,8 +84,6 @@ R3D(the loss function in the paper)
 
 R3D(custom loss function)
 
-![image](https://user-images.githubusercontent.com/28619620/146716758-d1feb9e2-c15b-4350-a2a8-1d9c3d6b575f.png)
-
 ## 5.3. Ranking
 
 ![image](https://user-images.githubusercontent.com/28619620/146717320-6396f5c1-9baa-4953-a37d-d5efd411dffb.png)
@@ -93,6 +91,14 @@ R3D(custom loss function)
 <b>Weakly-supervised Video Anomaly Detection with Robust Temporal Feature Magnitude Learning</b>
 https://arxiv.org/abs/2101.10030
 
+Method	Feature	AUC(%)
+Sultani et al.	C3D RGB	75.41 
+Zhang et al.	C3D RGB	78.66 
+Motion-Aware	PWC Flow	79.00 
+GCN-Anomaly	TSN RGB	82.12 
+Me	R3D RGB	83.00 
+RTFM	I3D RGB	84.30 
+![image](https://user-images.githubusercontent.com/28619620/146717427-96d8a546-7e31-4cfd-9197-66b3c372fb90.png)
 
 
 # 6. Conclusion
