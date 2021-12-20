@@ -51,7 +51,7 @@ https://arxiv.org/abs/1801.04264
 
 ## 4.2. Featuere Extraction
 
-기존 논문은 Sports-m1 데이터셋에서 사전 학습된 C3D 모델로 특징추출을 했다. 더 깊은 모델과 방대한 데이터셋으로 학습된 사전 학습 모델을 이용하면 성능을 높일 수 있을 것이라 생각하Kinetics-700,  Moments in Time 데이터셋을 이용하여 학습된 3D ResNet 모델로 특징을 추출했다. 
+Baseline 모델은 Sports-m1 데이터셋에서 사전 학습된 C3D 모델로 특징추출을 했다. 더 깊은 모델과 방대한 데이터셋으로 학습된 사전 학습 모델을 이용하면 성능을 높일 수 있을 것이라 생각하Kinetics-700,  Moments in Time 데이터셋을 이용하여 학습된 3D ResNet 모델로 특징을 추출했다. 
 
 Hirokatsu Kataoka, Tenga Wakamiya, Kensho Hara, and Yutaka Satoh,
 "Would Mega-scale Datasets Further Enhance Spatiotemporal 3D CNNs",
