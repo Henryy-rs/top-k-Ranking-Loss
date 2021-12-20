@@ -37,11 +37,11 @@ https://arxiv.org/abs/1801.04264
 
  기존 loss function(1)은 다음과 같다.
  
-![image](https://user-images.githubusercontent.com/28619620/146714848-208670bc-13d2-4069-b006-c2a1f0597bc4.png)(1)
+![image](https://user-images.githubusercontent.com/28619620/146714848-208670bc-13d2-4069-b006-c2a1f0597bc4.png)
 
 위의 loss function은 hinge-loss function이다. B는 영상의 조각을 담고 있는 가방(Bag), V는 영상의 특징 추출된 값, f는 모델을 의미한다. 이 loss function을 다음과 같이 바꾸었다.
 
-![image](https://user-images.githubusercontent.com/28619620/146714852-d392e74c-4115-42b1-9f8c-2e7af14f9116.png)(2) 
+![image](https://user-images.githubusercontent.com/28619620/146714852-d392e74c-4115-42b1-9f8c-2e7af14f9116.png)
 
 기존의 loss function은 가방 안에서 anomaly socre(모델의 출력값)의 최댓값을 사용해 loss를 계산했지만, 위 식에서는 상위 2개의 anomaly score를 사용해 loss를 계산한다. 이 변경을 통해 한 영상에서 더 많은 영상 조각을 학습에 사용할 수 있다. 이는 한 anomaly 영상에서 32개의 조각 중 최소 2개의 조각은 양성이라는 가정을 전제로 한다. 
 
@@ -50,6 +50,14 @@ https://arxiv.org/abs/1801.04264
 최종적으로 anomaly 영상에서 score기준 상위 4개의 영상 조각을 고르고, normal 영상에서 상위 2개의 영상, 하위 2개의 영상을 골라 loss를 계산하는 function을 만들었다.
 
 ## 4.2. Featuere Extraction
+
+기존 논문은 Sports-m1 데이터셋에서 사전 학습된 C3D 모델로 특징추출을 했다. 더 깊은 모델과 방대한 데이터셋으로 학습된 사전 학습 모델을 이용하면 성능을 높일 수 있을 것이라 생각하Kinetics-700,  Moments in Time 데이터셋을 이용하여 학습된 3D ResNet 모델로 특징을 추출했다. 
+
+Hirokatsu Kataoka, Tenga Wakamiya, Kensho Hara, and Yutaka Satoh,
+"Would Mega-scale Datasets Further Enhance Spatiotemporal 3D CNNs",
+arXiv preprint, arXiv:2004.04968, 2020.
+https://arxiv.org/abs/2004.04968
+https://github.com/kenshohara/3D-ResNets-PyTorch
 
 # 5. Result
 
