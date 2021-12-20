@@ -64,14 +64,17 @@ git: https://github.com/kenshohara/3D-ResNets-PyTorch
 # 5. Result
 
 ## 5.1. I3D
-![image](https://user-images.githubusercontent.com/28619620/146715579-95190498-5d6a-4593-9921-81417f900dbc.png)
-![image](https://user-images.githubusercontent.com/28619620/146715587-31ac42c8-29bb-4537-9148-4af0355be550.png)
+![i3d_soft_60_maxmid](https://user-images.githubusercontent.com/28619620/146715712-be4974c1-0934-47a2-a786-dc6aecd3d2b5.png)
+![toptop2_180k](https://user-images.githubusercontent.com/28619620/146715721-7ac98d02-1f2b-4078-ae57-98d703038a80.png)
+
+I3D(original loss), I3D(custom loss)
 
 ## 5.2. R3D
 
-![image](https://user-images.githubusercontent.com/28619620/146715623-a744a066-7454-4fbf-9a5b-4619003c698d.png)
-![image](https://user-images.githubusercontent.com/28619620/146715628-9db993ab-6567-49c6-b025-a59b5fa22fe7.png)
+![basic_roc_auc](https://user-images.githubusercontent.com/28619620/146715766-60a6be3c-7144-48db-b6dd-bba6abddfffa.png)
+![basic_roc_auc](https://user-images.githubusercontent.com/28619620/146715770-d5ae5183-fedd-4a1d-81b1-121686dfee1e.png)
 
+R3D(original loss), R3D(custom loss)
 
 # 6. Conclusion
 
