@@ -1,4 +1,4 @@
-# 2021-2-capstone-design
+# UCF-Crime-Anomaly-Detection
 
 Repository for report submission.
 
@@ -39,8 +39,10 @@ https://www.crcv.ucf.edu/projects/real-world/
 https://arxiv.org/abs/1801.04264
 ![image](https://user-images.githubusercontent.com/28619620/122191171-71ee6b00-cecd-11eb-83ec-2ffde455792e.png)
 
-- Input: 16프레임으로 쪼개진 영상 
-- Output: anomaly score
+- 비디오를 32개의 segments로 쪼개고 각각의 segment에 대해 feature extracion을 한다. 
+- 추출된 segment의 feature를 입력하여 anomaly score를 얻는다.
+- fully connect layer는 3층으로 되어있있다. (inuput laye(ReLU) -> layer 1(Linear) -> layer 2(Sigmoid)-> output(amomaly score))
+- 학습시 Deep MIL Ranking Model을 이용하여 loss를 계산한다.
  
 # 4. Changes
 
