@@ -4,8 +4,8 @@
 Repository for report submission.
 
 
-
-3dResNet Features (depth=152) -> https://drive.google.com/file/d/17wdy_DS9UY37J9XTV5XCLqxOFgXiv3ZK/view?usp=sharing
+I3D Features(dim=1024) ->
+3dResNet Features(depth=152, dim=2048) -> https://drive.google.com/file/d/17wdy_DS9UY37J9XTV5XCLqxOFgXiv3ZK/view?usp=sharing
 
 
 # 1. Overview
@@ -62,6 +62,16 @@ the paper: https://arxiv.org/abs/2004.04968
 git: https://github.com/kenshohara/3D-ResNets-PyTorch
 
 # 5. Result
+
+## 5.1. I3D
+![image](https://user-images.githubusercontent.com/28619620/146715579-95190498-5d6a-4593-9921-81417f900dbc.png)
+![image](https://user-images.githubusercontent.com/28619620/146715587-31ac42c8-29bb-4537-9148-4af0355be550.png)
+
+## 5.2. R3D
+
+![image](https://user-images.githubusercontent.com/28619620/146715623-a744a066-7454-4fbf-9a5b-4619003c698d.png)
+![image](https://user-images.githubusercontent.com/28619620/146715628-9db993ab-6567-49c6-b025-a59b5fa22fe7.png)
+
 
 # 6. Conclusion
 
