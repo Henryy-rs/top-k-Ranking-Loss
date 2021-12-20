@@ -36,18 +36,18 @@ https://arxiv.org/abs/1801.04264
 ## 4.1. Loss Function
 
  기존 loss function(1)은 다음과 같다.
-![image](https://user-images.githubusercontent.com/28619620/146714848-208670bc-13d2-4069-b006-c2a1f0597bc4.png)
-(1)
-       는 영상의 조각을 담고 있는 가방(Bag)을 의미한다. 는 영상의 특징 추출된 값을 의미한다.
-     는 모델을 의미한다. hinge-loss function이다. 이 loss function을 다음과 같이 바꾸었다.
-![image](https://user-images.githubusercontent.com/28619620/146714852-d392e74c-4115-42b1-9f8c-2e7af14f9116.png)
-(2) 
-      기존의 loss function은 가방 안에서 anomaly socre(모델의 출력값)의 최댓값을 사용해 loss를 계산했
-     지만, 위 식에서는 상위 2개의 anomaly score를 사용해 loss를 계산한다. 이 변경을 통해 한 영상에서       더 많은 영상 조각을 학습에 사용할 수 있다. 이는 한 anomaly 영상에서 32개의 조각 중 최소 2개의 
-     조각은 양성이라는 가정을 전제로 한다. 
+ 
+![image](https://user-images.githubusercontent.com/28619620/146714848-208670bc-13d2-4069-b006-c2a1f0597bc4.png)(1)
+
+위의 loss function은 hinge-loss function이다. B는 영상의 조각을 담고 있는 가방(Bag), V는 영상의 특징 추출된 값, f는 모델을 의미한다. 이 loss function을 다음과 같이 바꾸었다.
+
+![image](https://user-images.githubusercontent.com/28619620/146714852-d392e74c-4115-42b1-9f8c-2e7af14f9116.png)(2) 
+
+기존의 loss function은 가방 안에서 anomaly socre(모델의 출력값)의 최댓값을 사용해 loss를 계산했지만, 위 식에서는 상위 2개의 anomaly score를 사용해 loss를 계산한다. 이 변경을 통해 한 영상에서 더 많은 영상 조각을 학습에 사용할 수 있다. 이는 한 anomaly 영상에서 32개의 조각 중 최소 2개의 조각은 양성이라는 가정을 전제로 한다. 
+
 ![image](https://user-images.githubusercontent.com/28619620/146714861-13791dc3-437c-4b5a-b9ae-232152b9b713.png)
 
-최종적으로 anomaly 영상에서 score기준 상위 4개의 영상 조각을 고르고, normal 영상에서 상위 2개       의 영상, 하위 2개의 영상을 골라 loss를 계산하는 function을 만들었다.
+최종적으로 anomaly 영상에서 score기준 상위 4개의 영상 조각을 고르고, normal 영상에서 상위 2개의 영상, 하위 2개의 영상을 골라 loss를 계산하는 function을 만들었다.
 
 ## 4.2. Featuere Extraction
 
