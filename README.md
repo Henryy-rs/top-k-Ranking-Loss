@@ -50,9 +50,9 @@ https://arxiv.org/abs/1801.04264
 
 최종적으로 anomaly 영상에서 score기준 상위 4개의 영상 조각을 고르고, normal 영상에서 상위 2개의 영상, 하위 2개의 영상을 골라 loss를 계산하는 function을 만들었다.
 
-## 4.2. Featuere Extraction
+## 4.2. Featuere Extraction(I3D, R3D)
 
-Baseline 모델은 Sports-m1 데이터셋에서 사전 학습된 C3D 모델로 특징추출을 했다. 더 깊은 모델과 방대한 데이터셋으로 학습된 사전 학습 모델을 이용하면 성능을 높일 수 있을 것이라 생각하Kinetics-700,  Moments in Time 데이터셋을 이용하여 학습된 3D ResNet 모델로 특징을 추출했다. 
+Baseline 모델은 Sports-m1 데이터셋에서 사전 학습된 C3D 모델로 특징추출을 했다. 더 깊은 모델과 방대한 데이터셋으로 학습된 사전 학습 모델을 이용하면 성능을 높일 수 있을 것이라 생각하 여 Kinetics-700,  Moments in Time 데이터셋을 이용하여 학습된 3D ResNet 모델로 특징을 추출했다. 
 
 Hirokatsu Kataoka, Tenga Wakamiya, Kensho Hara, and Yutaka Satoh,
 "Would Mega-scale Datasets Further Enhance Spatiotemporal 3D CNNs",
@@ -84,7 +84,7 @@ R3D(the loss function in the paper)
 
 R3D(custom loss function)
 
-![image](https://user-images.githubusercontent.com/28619620/146716063-d328310c-1c3c-4a6d-9c35-b931df1a1910.png)
+![image](https://user-images.githubusercontent.com/28619620/146716758-d1feb9e2-c15b-4350-a2a8-1d9c3d6b575f.png)
 
 <b>Weakly-supervised Video Anomaly Detection with Robust Temporal Feature Magnitude Learning</b>
 https://arxiv.org/abs/2101.10030
