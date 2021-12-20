@@ -1,13 +1,10 @@
 # 2021-2-capstone-design
 
-
 Repository for report submission.
 
 3dResNet Features(depth=152, dim=2048) -> https://drive.google.com/file/d/17wdy_DS9UY37J9XTV5XCLqxOFgXiv3ZK/view?usp=sharing
 
 # 0. Usage
-
-
 
 # 1. Overview
 
@@ -97,3 +94,7 @@ https://arxiv.org/abs/2101.10030
 # 6. Conclusion
 
  사전학습모델을 개선하는 것으로 모델의 성능을 높일 수 있었다. 따라서 사전학습모델을 학습시키기 위한 데이터셋의 양질이 매우 중요하다. loss function을 수정하여 Test dataset에서 성능을 높였지만, 실제로 일반화 성능 측정하려면 추가로 테스트를 진행해야 한다. 기존 모델의 연산 속도와 큰 차이 없이 성능의 향상 이끌어 냈다는 점을 차별점이다. 
+ 
+# 7. Reference
+
+Training and test codes are borrowed from ekosman. https://github.com/ekosman/AnomalyDetectionCVPR2018-Pytorch
