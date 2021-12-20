@@ -85,5 +85,8 @@ R3D(the loss function in the paper)
 
 R3D(custom loss function)
 
+![image](https://user-images.githubusercontent.com/28619620/146716063-d328310c-1c3c-4a6d-9c35-b931df1a1910.png)
+
+
 # 6. Conclusion
 
