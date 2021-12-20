@@ -22,7 +22,12 @@ https://www.crcv.ucf.edu/projects/real-world/
 - 950 anomal videos/950 normal videos
 - weakly labeled data 
 
-# 3. Baseline
+# 3. Baseline Model
+
+<b>Real-world Anomaly Detection in Surveillance Videos</b>
+https://arxiv.org/abs/1801.04264
+![image](https://user-images.githubusercontent.com/28619620/122191171-71ee6b00-cecd-11eb-83ec-2ffde455792e.png)
+
 
 # 4. Changes
 
