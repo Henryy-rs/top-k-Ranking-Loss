@@ -6,6 +6,19 @@ Repository for report submission.
 
 # 0. Usage
 
+- Feature extraction
+
+
+ ```bash
+ 
+    python feature_extractor.py -o features -i your_dataset_dir --m your_path_to_pretrined_model -t your_extractor_type
+
+ ```
+ 
+- Training, Test: See here for a detailed explanation.
+
+https://github.com/ekosman/AnomalyDetectionCVPR2018-Pytorch
+
 # 1. Overview
 
 코로나 19가 장기간 유행하고 언택트 트렌드가 확산되면서 다양한 업종의 무인매장이 들어서고 있다. 이에 따라 무인매장에서 도난을 비롯한 사건사고에 관한 소식이 끊이지 않고 있다. 무인매장에 설치되어 있는 CCTV를 활용하는 이상 탐지 모델을 개발 한다면 도난사고를 예방하고 이상 상황 발생 시 신속하게 대처 할 수 있는 보안 솔루션으로 사용될 수 있을 것이다.
