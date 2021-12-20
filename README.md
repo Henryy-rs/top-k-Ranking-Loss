@@ -56,8 +56,10 @@ https://arxiv.org/abs/1801.04264
 Hirokatsu Kataoka, Tenga Wakamiya, Kensho Hara, and Yutaka Satoh,
 "Would Mega-scale Datasets Further Enhance Spatiotemporal 3D CNNs",
 arXiv preprint, arXiv:2004.04968, 2020.
-https://arxiv.org/abs/2004.04968
-https://github.com/kenshohara/3D-ResNets-PyTorch
+
+the paper: https://arxiv.org/abs/2004.04968
+
+git: https://github.com/kenshohara/3D-ResNets-PyTorch
 
 # 5. Result
 
