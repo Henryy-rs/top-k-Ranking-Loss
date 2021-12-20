@@ -86,8 +86,14 @@ R3D(custom loss function)
 
 ![image](https://user-images.githubusercontent.com/28619620/146716758-d1feb9e2-c15b-4350-a2a8-1d9c3d6b575f.png)
 
+## 5.3. Ranking
+
+![image](https://user-images.githubusercontent.com/28619620/146717320-6396f5c1-9baa-4953-a37d-d5efd411dffb.png)
+
 <b>Weakly-supervised Video Anomaly Detection with Robust Temporal Feature Magnitude Learning</b>
 https://arxiv.org/abs/2101.10030
+
+
 
 # 6. Conclusion
 
