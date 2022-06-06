@@ -72,6 +72,7 @@ git: https://github.com/kenshohara/3D-ResNets-PyTorch
 # 5. Result
 
 ![image](https://user-images.githubusercontent.com/28619620/172195704-5d91922d-8b3e-4875-9a8e-16c69f4ff852.png)
+
 R3D + top-k Ranking Loss Models
 
 ![compare_k](https://user-images.githubusercontent.com/28619620/172195422-ba7d4a5f-892f-4fc6-b4f0-d1061a91af70.png)
@@ -80,7 +81,7 @@ R3D + top-k Ranking Loss Models
 
 # 6. Conclusion
 
- 사전학습모델을 개선하는 것으로 모델의 성능을 높일 수 있었다. 따라서 사전학습모델을 학습시키기 위한 데이터셋의 양질이 매우 중요하다. loss function을 수정하여 Test dataset에서 성능을 높였지만, 실제로 일반화 성능 측정하려면 추가로 테스트를 진행해야 한다. 기존 모델의 연산 속도와 큰 차이 없이 성능의 향상 이끌어 냈다는 점을 차별점이다. 
+ 사전학습모델을 개선하는 것으로 모델의 성능을 높일 수 있었다. 따라서 사전학습모델을 학습시키기 위한 데이터셋의 양질이 매우 중요하다. 또한 적절한 k값을 기존 모델의 연산 속도와 큰 차이 없이 성능의 향상 이끌어 냈다는 점을 차별점이다. 찾아 top-k Ranking Loss를 사용하는 것이 모델의 성능을 향상시킬 수 있음을 확인했다. 다만 동일한 데이터셋에서 더 많은 영상 조각을 학습에 사용하려는 의도로 top-k ranking loss를 고안하였고, 데이터셋마다 적절한 k가 존재할 것이라 기대했지만, 실험 결과 같은 데이터셋에서 특징 추출 기법마다 적절한 k값이 달라지는 이유에 대해서는 알지 못한다. 추후 연구를 통해 UCF-Crime 외에 다른 데이터셋에서의 추가적인 검증이 필요하다.
  
 # 7. Reference
 
