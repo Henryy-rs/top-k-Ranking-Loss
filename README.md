@@ -71,7 +71,8 @@ git: https://github.com/kenshohara/3D-ResNets-PyTorch
 
 # 5. Result
 
-![image](https://user-images.githubusercontent.com/28619620/172195488-8d927c45-2167-4b3d-a6f1-c23d0410243a.png)
+![image](https://user-images.githubusercontent.com/28619620/172195704-5d91922d-8b3e-4875-9a8e-16c69f4ff852.png)
+R3D + top-k Ranking Loss Models
 
 ![compare_k](https://user-images.githubusercontent.com/28619620/172195422-ba7d4a5f-892f-4fc6-b4f0-d1061a91af70.png)
 
