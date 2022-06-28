@@ -8,7 +8,7 @@ from torch.utils.tensorboard import SummaryWriter
 
 from features_loader import FeaturesLoader
 from network.TorchUtils import TorchModel
-from network.anomaly_detector_model import AnomalyDetector, custom_objective, original_objective, RegularizedLoss
+from network.anomaly_detector_model import AnomalyDetector, objective, RegularizedLoss
 from utils.callbacks import DefaultModelCallback, TensorBoardCallback
 from utils.utils import register_logger, get_torch_device
 
@@ -31,7 +31,7 @@ def get_args():
     # optimization
     parser.add_argument('--batch_size', type=int, default=60,
                         help="batch size")
-    parser.add_argument('--feature_dim', type=int, default=4096,
+    parser.add_argument('--feature_dim', type=int, default=2048,
                         help="feature dimension")
     parser.add_argument('--save_every', type=int, default=1,
                         help="epochs interval for saving the model checkpoints")
@@ -41,8 +41,8 @@ def get_args():
                         help="number of training iterations")
     parser.add_argument('--epochs', type=int, default=2,
                         help="number of training epochs")
-    parser.add_argument('--loss_type', type=str, default="original", 
-                        choices=['original', 'custom'], help="number of training epochs")
+    parser.add_argument('--k', type=int, default=1,
+                        help="set top-k Ranking Loss parameters")
 
     return parser.parse_args()
 
@@ -83,12 +83,7 @@ if __name__ == "__main__":
         epsilon = 1e-8
     """
     optimizer = torch.optim.Adadelta(model.parameters(), lr=args.lr_base, eps=1e-8)
-    
-    if args.loss_type == "original":
-        criterion = RegularizedLoss(network, original_objective).to(device)
-    else:
-        criterion = RegularizedLoss(network, custom_objective).to(device)
-
+    criterion = RegularizedLoss(network, objective, args.k).to(device)
 
     # Callbacks
     tb_writer = SummaryWriter(log_dir=tb_dir)

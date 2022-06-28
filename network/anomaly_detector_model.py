@@ -3,7 +3,7 @@ from torch import nn
 
 
 class AnomalyDetector(nn.Module):
-    def __init__(self, input_dim=4096):
+    def __init__(self, input_dim=2048):
         super(AnomalyDetector, self).__init__()
         self.fc1 = nn.Linear(input_dim, 512)
         self.relu1 = nn.ReLU()
@@ -28,7 +28,7 @@ class AnomalyDetector(nn.Module):
         return x
 
 
-def original_objective(y_pred, y_true):
+def objective(y_pred, y_true, k):
     # y_pred (batch_size, 32, 1)
     # y_true (batch_size)
     lambdas = 8e-5
@@ -40,43 +40,10 @@ def original_objective(y_pred, y_true):
     anomal_segments_scores = y_pred[anomal_vids_indices].squeeze(-1)  # (batch/2, 32, 1)
 
     # get the max score for each video
-    normal_segments_scores_maxes = normal_segments_scores.max(dim=-1)[0]
-    anomal_segments_scores_maxes = anomal_segments_scores.max(dim=-1)[0]
+    normal_segments_scores_maxes = normal_segments_scores.topk(k=k, dim=-1)[0] #+ normal_segments_scores.topk(k=2, largest=False, dim=-1)[0]
+    anomal_segments_scores_maxes = anomal_segments_scores.topk(k=k, dim=-1)[0]
 
-    hinge_loss = 1 - anomal_segments_scores_maxes + normal_segments_scores_maxes
-    hinge_loss = torch.max(hinge_loss, torch.zeros_like(hinge_loss))
-
-    """
-    Smoothness of anomalous video
-    """
-    smoothed_scores = anomal_segments_scores[:, 1:] - anomal_segments_scores[:, :-1]
-    smoothed_scores_sum_squared = smoothed_scores.pow(2).sum(dim=-1)
-
-    """
-    Sparsity of anomalous video
-    """
-    sparsity_loss = anomal_segments_scores.sum(dim=-1)
-
-    final_loss = (hinge_loss + lambdas*smoothed_scores_sum_squared + lambdas*sparsity_loss).mean()
-    return final_loss
-
-
-def custom_objective(y_pred, y_true):
-    # y_pred (batch_size, 32, 1)
-    # y_true (batch_size)
-    lambdas = 8e-5
-
-    normal_vids_indices = torch.where(y_true == 0)
-    anomal_vids_indices = torch.where(y_true == 1)
-
-    normal_segments_scores = y_pred[normal_vids_indices].squeeze(-1)  # (batch/2, 32, 1)
-    anomal_segments_scores = y_pred[anomal_vids_indices].squeeze(-1)  # (batch/2, 32, 1)
-
-    # get the max score for each video
-    normal_segments_scores_maxes = normal_segments_scores.topk(k=2, dim=-1)[0] + normal_segments_scores.topk(k=2, largest=False, dim=-1)[0]
-    anomal_segments_scores_maxes = anomal_segments_scores.topk(k=4, dim=-1)[0]
-
-    hinge_loss = 4 - torch.sum(anomal_segments_scores_maxes, dim=-1) + torch.sum(normal_segments_scores_maxes, dim=-1)
+    hinge_loss = k - torch.sum(anomal_segments_scores_maxes, dim=-1) + torch.sum(normal_segments_scores_maxes, dim=-1)
     hinge_loss = torch.max(hinge_loss, torch.zeros_like(hinge_loss))
 
     """
@@ -95,11 +62,12 @@ def custom_objective(y_pred, y_true):
 
 
 class RegularizedLoss(torch.nn.Module):
-    def __init__(self, model, original_objective, lambdas=0.001):
+    def __init__(self, model, objective, k=1, lambdas=0.001):
         super(RegularizedLoss, self).__init__()
         self.lambdas = lambdas
         self.model = model
-        self.objective = original_objective
+        self.objective = objective
+        self.k = k
 
     def forward(self, y_pred, y_true):
         # loss
@@ -112,5 +80,5 @@ class RegularizedLoss(torch.nn.Module):
         l2_regularization = self.lambdas * torch.norm(fc2_params, p=2)
         l3_regularization = self.lambdas * torch.norm(fc3_params, p=2)
 
-        return self.objective(y_pred, y_true) + l1_regularization + l2_regularization + l3_regularization
+        return self.objective(y_pred, y_true, self.k) + l1_regularization + l2_regularization + l3_regularization
 
