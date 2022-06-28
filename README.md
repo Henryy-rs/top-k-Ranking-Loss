@@ -50,19 +50,14 @@ https://arxiv.org/abs/1801.04264
 
  기존 loss function(1)은 다음과 같다.
  
-![image](https://user-images.githubusercontent.com/28619620/146714848-208670bc-13d2-4069-b006-c2a1f0597bc4.png)
+![loss_function](https://user-images.githubusercontent.com/28619620/172195239-c214e666-c4c3-4548-b7e4-098c1a7a8723.png)
 
 위의 loss function은 hinge-loss function이다. B는 영상의 조각을 담고 있는 가방(Bag), V는 영상의 특징 추출된 값, f는 모델을 의미한다. 이 loss function을 다음과 같이 바꾸었다.
 
-![image](https://user-images.githubusercontent.com/28619620/146714852-d392e74c-4115-42b1-9f8c-2e7af14f9116.png)
+![CodeCogsEqn (11)](https://user-images.githubusercontent.com/28619620/172195208-e2374d3a-795a-4d6a-a3bb-3abd377790db.png)
 
-기존의 loss function은 가방 안에서 anomaly socre(모델의 출력값)의 최댓값을 사용해 loss를 계산했지만, 위 식에서는 상위 2개의 anomaly score를 사용해 loss를 계산한다. 이 변경을 통해 한 영상에서 더 많은 영상 조각을 학습에 사용할 수 있다. 이는 한 anomaly 영상에서 32개의 조각 중 최소 2개의 조각은 양성이라는 가정을 전제로 한다. 
 
-![image](https://user-images.githubusercontent.com/28619620/146714861-13791dc3-437c-4b5a-b9ae-232152b9b713.png)
-
-최종적으로 anomaly 영상에서 score기준 상위 4개의 영상 조각을 고르고, normal 영상에서 상위 2개의 영상, 하위 2개의 영상을 골라 loss를 계산하는 function을 만들었다.
-
-## 4.2. Featuere Extraction(I3D, R3D)
+## 4.2. Featuere Extraction(C3D, I3D, R3D)
 
 Baseline 모델은 Sports-m1 데이터셋에서 사전 학습된 C3D 모델로 특징추출을 했다. 더 깊은 모델과 방대한 데이터셋으로 학습된 사전 학습 모델을 이용하면 성능을 높일 수 있을 것이라 생각하 여 Kinetics-700,  Moments in Time 데이터셋을 이용하여 학습된 3D ResNet 모델로 특징을 추출했다. 
 
@@ -76,39 +71,17 @@ git: https://github.com/kenshohara/3D-ResNets-PyTorch
 
 # 5. Result
 
-## 5.1. I3D
-![i3d_soft_60_maxmid](https://user-images.githubusercontent.com/28619620/146715712-be4974c1-0934-47a2-a786-dc6aecd3d2b5.png)
+![image](https://user-images.githubusercontent.com/28619620/172195704-5d91922d-8b3e-4875-9a8e-16c69f4ff852.png)
 
-I3D(the loss function in the paper)
+R3D + top-k Ranking Loss Models
 
-![toptop2_180k](https://user-images.githubusercontent.com/28619620/146715721-7ac98d02-1f2b-4078-ae57-98d703038a80.png)
+![compare_k](https://user-images.githubusercontent.com/28619620/172195422-ba7d4a5f-892f-4fc6-b4f0-d1061a91af70.png)
 
-I3D(custom loss function)
-
-
-## 5.2. R3D
-
-![basic_roc_auc](https://user-images.githubusercontent.com/28619620/146715766-60a6be3c-7144-48db-b6dd-bba6abddfffa.png)
-
-R3D(the loss function in the paper)
-
-![roc_auc](https://user-images.githubusercontent.com/28619620/146715832-00cdf7ff-b7cf-4696-a8ed-078fe401807d.png)
-
-R3D(custom loss function)
-
-## 5.3. Ranking
-
-![image](https://user-images.githubusercontent.com/28619620/146717320-6396f5c1-9baa-4953-a37d-d5efd411dffb.png)
-
-<b>Weakly-supervised Video Anomaly Detection with Robust Temporal Feature Magnitude Learning</b>
-https://arxiv.org/abs/2101.10030
-
-![image](https://user-images.githubusercontent.com/28619620/146717427-96d8a546-7e31-4cfd-9197-66b3c372fb90.png)
 
 
 # 6. Conclusion
 
- 사전학습모델을 개선하는 것으로 모델의 성능을 높일 수 있었다. 따라서 사전학습모델을 학습시키기 위한 데이터셋의 양질이 매우 중요하다. loss function을 수정하여 Test dataset에서 성능을 높였지만, 실제로 일반화 성능 측정하려면 추가로 테스트를 진행해야 한다. 기존 모델의 연산 속도와 큰 차이 없이 성능의 향상 이끌어 냈다는 점을 차별점이다. 
+ 사전학습모델을 개선하는 것으로 모델의 성능을 높일 수 있었다. 또한 적절한 k값을 찾아 top-k Ranking Loss를 사용하는 것이 모델의 성능을 향상시킬 수 있음을 확인했다. 다만 동일한 데이터셋에서 더 많은 영상 조각을 학습에 사용하려는 의도로 top-k ranking loss를 고안하였고, 데이터셋마다 적절한 k가 존재할 것이라 기대했지만, 실험 결과 같은 데이터셋에서 특징 추출 기법마다 적절한 k값이 달라지는 이유에 대해서는 알지 못한다. 추후 연구를 통해 UCF-Crime 외에 다른 데이터셋에서의 추가적인 검증이 필요하다.
  
 # 7. Reference
 
